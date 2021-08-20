@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { TimelinesComponent } from './components/timelines/timelines.component';
 import { YoutubePlaylistComponent } from './components/youtube-playlist/youtube-playlist.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductCreateComponent } from './components/product/product-create/product-create.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimelinesComponent,
     YoutubePlaylistComponent,
-    YoutubePlayerComponent
+    YoutubePlayerComponent,
+    ProductListComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
