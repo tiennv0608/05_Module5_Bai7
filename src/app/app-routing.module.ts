@@ -5,6 +5,8 @@ import {YoutubePlaylistComponent} from './components/youtube-playlist/youtube-pl
 import {YoutubePlayerComponent} from './components/youtube-player/youtube-player.component';
 import {ProductListComponent} from './components/product/product-list/product-list.component';
 import {ProductCreateComponent} from './components/product/product-create/product-create.component';
+import {DictionaryPageComponent} from './components/dictionary/dictionary-page/dictionary-page.component';
+import {DictionaryDetailComponent} from './components/dictionary/dictionary-detail/dictionary-detail.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path: 'product/create',
     component: ProductCreateComponent
+  },
+  {
+    path: 'dictionaries',
+    component: DictionaryPageComponent,
+    children: [{
+      path: ':id',
+      component: DictionaryDetailComponent
+    }]
   }
 ];
 
