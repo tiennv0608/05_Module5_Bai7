@@ -54,4 +54,12 @@ export class ProductService {
     });
     this.products[index] = product;
   }
+
+  delete(id) {
+    const product = this.findById(id);
+    const index = this.products.findIndex(p => {
+      return p.id === product.id;
+    });
+    this.products.splice(index, 1);
+  }
 }
