@@ -3,11 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {TimelinesComponent} from './components/timelines/timelines.component';
 import {YoutubePlaylistComponent} from './components/youtube-playlist/youtube-playlist.component';
 import {YoutubePlayerComponent} from './components/youtube-player/youtube-player.component';
-import {ProductListComponent} from './components/product/product-list/product-list.component';
-import {ProductCreateComponent} from './components/product/product-create/product-create.component';
 import {DictionaryPageComponent} from './components/dictionary/dictionary-page/dictionary-page.component';
 import {DictionaryDetailComponent} from './components/dictionary/dictionary-detail/dictionary-detail.component';
-import {ProductUpdateComponent} from './components/product/product-update/product-update.component';
 
 
 const routes: Routes = [
@@ -24,16 +21,12 @@ const routes: Routes = [
     }]
   },
   {
-    path: 'product/list',
-    component: ProductListComponent
+    path: 'product',
+    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)
   },
   {
-    path: 'product/create',
-    component: ProductCreateComponent
-  },
-  {
-    path: 'product/update/:id',
-    component: ProductUpdateComponent
+    path: 'category',
+    loadChildren: () => import('./module/category/category.module').then(module => module.CategoryModule)
   },
   {
     path: 'dictionaries',
