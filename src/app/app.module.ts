@@ -9,6 +9,7 @@ import { YoutubePlayerComponent } from './components/youtube-player/youtube-play
 import { DictionaryPageComponent } from './components/dictionary/dictionary-page/dictionary-page.component';
 import { DictionaryDetailComponent } from './components/dictionary/dictionary-detail/dictionary-detail.component';
 import {SharedModule} from './module/shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {SharedModule} from './module/shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

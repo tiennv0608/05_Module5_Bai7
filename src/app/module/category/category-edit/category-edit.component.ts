@@ -9,7 +9,9 @@ import {CategoryService} from '../../../service/category.service';
   styleUrls: ['./category-edit.component.css']
 })
 export class CategoryEditComponent implements OnInit {
-  categoryForm: FormGroup;
+  categoryForm: FormGroup = new FormGroup({
+    name: new FormControl()
+  });
   id: number;
 
   constructor(private categoryService: CategoryService,
@@ -17,11 +19,7 @@ export class CategoryEditComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      const category = this.getCategory(this.id);
-      this.categoryForm = new FormGroup({
-        id: new FormControl(category.id),
-        name: new FormControl(category.name),
-      });
+      this.getCategory(this.id);
     });
   }
 
@@ -29,13 +27,20 @@ export class CategoryEditComponent implements OnInit {
   }
 
   getCategory(id: number) {
-    return this.categoryService.findById(id);
+    return this.categoryService.findById(id).subscribe(category => {
+      this.categoryForm = new FormGroup({
+        name: new FormControl(category.name),
+      });
+    });
   }
 
   updateCategory(id: number) {
     const category = this.categoryForm.value;
-    this.categoryService.updateCategory(id, category);
-    alert('Cập nhật thành công');
-    this.router.navigate(['/category/list']);
+    this.categoryService.updateCategory(id, category).subscribe(() => {
+      alert('Cập nhật thành công');
+      this.router.navigate(['/category/list']);
+    }, error => {
+      console.log(error);
+    });
   }
 }

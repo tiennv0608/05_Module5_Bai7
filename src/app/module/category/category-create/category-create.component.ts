@@ -11,7 +11,6 @@ import {Router} from '@angular/router';
 export class CategoryCreateComponent implements OnInit {
 
   categoryForm: FormGroup = new FormGroup({
-    id: new FormControl(),
     name: new FormControl()
   });
 
@@ -24,10 +23,13 @@ export class CategoryCreateComponent implements OnInit {
 
   submit() {
     const category = this.categoryForm.value;
-    this.categoryService.saveCategory(category);
-    this.categoryForm.reset();
-    alert('Tạo mới thành công');
-    this.router.navigate(['/category/list']);
+    this.categoryService.saveCategory(category).subscribe(() => {
+      this.categoryForm.reset();
+      alert('Tạo mới thành công');
+      this.router.navigate(['/category/list']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
