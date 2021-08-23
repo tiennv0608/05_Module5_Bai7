@@ -8,6 +8,7 @@ import { YoutubePlaylistComponent } from './components/youtube-playlist/youtube-
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 import { DictionaryPageComponent } from './components/dictionary/dictionary-page/dictionary-page.component';
 import { DictionaryDetailComponent } from './components/dictionary/dictionary-detail/dictionary-detail.component';
+import {SharedModule} from './module/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DictionaryDetailComponent } from './components/dictionary/dictionary-de
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
